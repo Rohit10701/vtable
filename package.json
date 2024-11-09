@@ -1,0 +1,24 @@
+  {
+    "name": "root",
+    "private": true,
+    "workspaces": [
+      "apps/*",
+      "packages/*"
+    ],
+    "scripts": {
+      "docker": "docker-compose up -d",
+      "dev:backend": "npm run dev --prefix apps/mock-backend",
+      "dev:frontend": "npm run dev --prefix apps/frontend",
+"dev": "npm run docker && concurrently \"npm run dev:backend\" \"npm run dev:frontend\""
+,      "build": "lerna run build",
+      "test": "lerna run test",
+      "clean": "lerna clean",
+      "bootstrap": "lerna bootstrap"
+    },
+    "dependencies": {
+      "concurrently": "^8.2.2"
+    },
+    "devDependencies": {
+      "lerna": "^8.1.9"
+    }
+  }
